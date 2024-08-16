@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucid Demo Vehicles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Lucid Demo Vehicles</h1>
+    </header>
+    <section id="vehicles">
+        {% for vehicle in vehicles %}
+        <div class="vehicle">
+            <h2>{{ vehicle['name'] }}</h2>
+            <p><strong>VIN:</strong> {{ vehicle['vin'] }}</p>
+            <p><strong>Mileage:</strong> {{ vehicle['mileage'] }}</p>
+            <p><strong>Price:</strong> {{ vehicle['price'] }}</p>
+            <p><strong>Location:</strong> {{ vehicle['location'] }}</p>
+            <p><strong>Logistics Cost:</strong> {{ vehicle['logistics_cost'] }}</p>
+            <p><strong>Available Date:</strong> {{ vehicle['available_date'] }}</p>
+            <p>{{ vehicle['description'] }}</p>
+
+            <div class="images">
+                {% for image in vehicle['images'] %}
+                <img src="{{ url_for('images', filename=image) }}" alt="Vehicle Image">
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</body>
+</html>
